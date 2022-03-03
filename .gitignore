@@ -1,0 +1,16 @@
+## ignore old files 
+./old/**
+
+## ignore test files
+*.test.*
+
+## ignore ipython notebooks and checkpoints
+*.ipynb
+*.ipynb_checkpoints
+
+## ignore python cached files
+*_pycache_*
+
+## ignore png and pdf figures
+./figures/*.png
+./figures/*.pdf
