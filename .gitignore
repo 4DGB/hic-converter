@@ -4,6 +4,9 @@
 ## ignore test files
 *.test.*
 
+## ignore ds stores
+./data/*.DS_Store
+
 ## ignore ipython notebooks and checkpoints
 *.ipynb
 *.ipynb_checkpoints
