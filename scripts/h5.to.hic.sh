@@ -106,12 +106,15 @@ fi
 echo "    h5 --> tsv  "
 echo "Converting h5 matrix to ginteractions (tsv) file via hicConvertFormat."
 
+## Call hic converter from HiCExplorer
 hicConvertFormat -m $h5 -o ${outdir}${math5}.toremove.ginteractions --inputFormat h5 --outputFormat ginteractions
 
 ## Convert tsv to shorted short file
 echo " "
 echo "   tsv --> short"
 echo "Converting ginteractions file to sorted, short file."
+
+## Envoke our h5 to short python script
 h5.to.short.py ${outdir}${math5}.toremove.ginteractions.tsv $genomesizes ${outdir}${math5}.toremove.short $verbose
 
 ## Call juicer
