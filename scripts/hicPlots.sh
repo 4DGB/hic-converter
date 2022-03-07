@@ -9,19 +9,15 @@ conda activate pygenometracks
 ## 
 ##
 ## For chromosome 6
-hicPlotMatrix --matrix ../data/ENCLB571GEP.chr6.200kb.h5 \
-    --title "A549 Chromosome 6 Hi-C Contacts" \
-    --rotationX 90 --log1p --dpi 300 --colorMap coolwarm \
-    --increaseFigureHeight 1.25 --increaseFigureWidth 1.25 --fontsize 6 \
-    --outFileName ../figures/ENCLB571GEP.chr6.png 
+hicPlotMatrix --matrix ./data/h5/ENCLB571GEP.chr6.200kb.h5 --outFileName ./data/figures/ENCLB571GEP.chr6.png \
+    --title "A549 Chromosome 6 Hi-C Contacts" --rotationX 90 --log1p --dpi 300 \
+    --colorMap coolwarm --increaseFigureHeight 1.25 --increaseFigureWidth 1.25 --fontsize 6 
 ## 
 ## 
 ## For chromosome 22
-hicPlotMatrix --matrix ../data/ENCLB571GEP.chr22.200kb.h5 \
-    --title "A549 Chromosome 22 Hi-C Contacts" \
-    --rotationX 90 --log1p --dpi 300 --colorMap coolwarm \
-    --increaseFigureHeight 1.25 --increaseFigureWidth 1.25 --fontsize 6 \
-    --outFileName ../figures/ENCLB571GEP.chr22.png 
+hicPlotMatrix --matrix ./data/h5/ENCLB571GEP.chr22.200kb.h5 --outFileName ./data/figures/ENCLB571GEP.chr22.png \
+    --title "A549 Chromosome 22 Hi-C Contacts" --rotationX 90 --log1p --dpi 300 \
+    --colorMap coolwarm --increaseFigureHeight 1.25 --increaseFigureWidth 1.25 --fontsize 6 
 ##
 ## 
 ## fin

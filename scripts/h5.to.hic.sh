@@ -11,7 +11,7 @@
 ## conda activate /opt/apps/anaconda/3.2021.05/envs/hicexplorer
 ##
 ## Call the conversion script
-## ./h5.to.hic.sh -m ../data/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/ -V true
+## ./h5.to.hic.sh -m ../data/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/ -V true -R false
 ##	
 ## ------------------------------------------------------------------------------------------------------------- ##
 ##
