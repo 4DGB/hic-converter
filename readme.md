@@ -1,6 +1,17 @@
 # hic-converter
 A collection of scripts used in preprocessing and setup of Hi-C data for the 4DGB project.
 
+# Example Usage
+### Converting contact matrix from hicexplorer as an .h5 file to a contact matrix with .hic
+    ## Acitvate hic-explorer environment
+    conda activate hicexplorerenv
+
+    ## Change directory
+    cd /hic-converter/scripts
+
+    ## Envoke h5 to hic conversion
+    ./h5.to.hic.sh -m ../data/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/ -V true -R false
+
 # Installation
 ### Download and set up
     ## Clone this repo
@@ -15,17 +26,6 @@ A collection of scripts used in preprocessing and setup of Hi-C data for the 4DG
 
 ### Generate a conda environment with an installation of HiCExplorer
     conda create -n hicexplorerenv hicexplorer -c bioconda -c conda-forge
-
-# Example Usage
-### Converting contact matrix from hicexplorer as an .h5 file to a contact matrix with .hic
-    ## Acitvate hic-explorer environment
-    conda activate hicexplorerenv
-
-    ## Change directory
-    cd /hic-converter/scripts
-
-    ## Envoke h5 to hic conversion
-    ./h5.to.hic.sh -m ../data/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/ -V true -R false
 
 # Dependencies
 ### Juicer
