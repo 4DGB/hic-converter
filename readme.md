@@ -7,10 +7,10 @@ A collection of scripts used in preprocessing and setup of Hi-C data for the 4DG
     conda activate hicexplorerenv
 
     ## Change directory
-    cd /hic-converter/scripts
+    cd ./hic-converter/scripts
 
     ## Envoke h5 to hic conversion
-    ./h5.to.hic.sh -m ../data/h5/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/hic
+    ./h5.to.hic.sh -m ../data/h5/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/hic/
 
 # Installation
 ### Download and set up
