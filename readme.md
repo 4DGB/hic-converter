@@ -44,7 +44,7 @@ Data used here was taken from the ENCODE project which has produced paired-end s
 # Useful commands for 4DGB project
 ### Example using juicer tools for Hi-C data preprocessing
     ## change directory and 
-    ## make alia's callable in this instance
+    ## make alias callable in this instance
     cd ./hic-converter
     shopt -s expand_aliases
 
