@@ -37,3 +37,6 @@ Scripts here were developed using version 1.22.01 ([also stored here on this rep
 [Anaconda](https://www.anaconda.com/products/individual) 
 
 A conda environment is generated to install [HiCExplorer](https://hicexplorer.readthedocs.io/en/latest/index.html)
+
+# Data used
+Data used here was taken from the ENCODE project which has produced paired-end sequencing libraries on A549 cells, a cancer lung cell line. Specifically, the paired-end sequencing library of the first isogenic replicate ([ENCLB571GEP](https://www.encodeproject.org/experiments/ENCSR662QKG/)) with paired files [ENCFF039FYU](https://www.encodeproject.org/files/ENCFF039FYU/) and [ENCFF479RSE](https://www.encodeproject.org/files/ENCFF479RSE/) were used to generate hic files via HiCExplorer. 
