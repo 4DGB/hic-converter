@@ -10,7 +10,7 @@ A collection of scripts used in preprocessing and setup of Hi-C data for the 4DG
     cd /hic-converter/scripts
 
     ## Envoke h5 to hic conversion
-    ./h5.to.hic.sh -m ../data/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/ -V true -R false
+    ./h5.to.hic.sh -m ../data/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/
 
 # Installation
 ### Download and set up
