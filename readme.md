@@ -9,7 +9,7 @@ A collection of scripts used in preprocessing and setup of Hi-C data for the 4DG
     ## Change directory
     cd ./hic-converter/scripts
 
-    ## Envoke h5 to hic conversion
+    ## Envoke h5 to hic conversion for chromosome 22
     ./h5.to.hic.sh -m ../data/h5/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/hic/
 
 # Installation
@@ -18,7 +18,7 @@ A collection of scripts used in preprocessing and setup of Hi-C data for the 4DG
     git clone git@github.com:4DGB/hic-converter.git
 
     ## Change directory to scripts
-    cd /hic-converter/scripts
+    cd ./hic-converter/scripts
 
     ## Make scripts executable
     chmod +x h5.to.hic.sh
