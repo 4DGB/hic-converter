@@ -1,7 +1,7 @@
 # hic-converter
 A collection of scripts used in preprocessing and setup of Hi-C data for the 4DGB project.
 
-# Example Usage
+# Example usage
 ### Converting contact matrix from hicexplorer as an .h5 file to a contact matrix with .hic
     ## Acitvate hic-explorer environment
     conda activate hicexplorerenv
@@ -39,4 +39,17 @@ Scripts here were developed using version 1.22.01 ([also stored here on this rep
 A conda environment is generated to install [HiCExplorer](https://hicexplorer.readthedocs.io/en/latest/index.html)
 
 # Data used
-Data used here was taken from the ENCODE project which has produced paired-end sequencing libraries on A549 cells, a cancer lung cell line. Specifically, the paired-end sequencing library of the first isogenic replicate ([ENCLB571GEP](https://www.encodeproject.org/experiments/ENCSR662QKG/)) with paired files [ENCFF039FYU](https://www.encodeproject.org/files/ENCFF039FYU/) and [ENCFF479RSE](https://www.encodeproject.org/files/ENCFF479RSE/) were used to generate hic files via HiCExplorer. 
+Data used here was taken from the ENCODE project which has produced paired-end sequencing libraries on A549 cells, a cancer lung cell line. Specifically, the paired-end sequencing library of the first isogenic replicate ([ENCLB571GEP](https://www.encodeproject.org/experiments/ENCSR662QKG/)) with paired files [ENCFF039FYU](https://www.encodeproject.org/files/ENCFF039FYU/) and [ENCFF479RSE](https://www.encodeproject.org/files/ENCFF479RSE/) were used to generate hic files via HiCExplorer.
+
+# Useful commands for Hi-C data preprocessing for the 4DGB project
+    ## change directory and 
+    ## make alia's callable in this instance
+    cd ./hic-converter
+    shopt -s expand_aliases
+
+    ## Set the juicer alias
+    alias juicer='java -Xms512m -Xmx2048m -jar ./jar/juicer_tools_1.22.01.jar'
+
+    ## Splitting off single chromosome (chromosome 22) data from large Hi-C file
+    ## that is KR balanced and resolved at 200 kb
+    juicer pre in.short out.chr22.200kb.hic ./sizes/chr22.size.bed -r 200000 -k KR
