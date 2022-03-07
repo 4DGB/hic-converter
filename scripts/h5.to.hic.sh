@@ -8,7 +8,7 @@
 ## cd ~/hic-converter/scripts/
 ## 
 ## Activate conda env
-## conda activate /opt/apps/anaconda/3.2021.05/envs/hicexplorer
+## conda activate hicexplorerenv
 ##
 ## Call the conversion script
 ## ./h5.to.hic.sh -m ../data/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/ -V true -R false

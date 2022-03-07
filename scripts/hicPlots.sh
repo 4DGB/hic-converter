@@ -5,7 +5,7 @@
 ## NOTE: be sure to activate python environment with 
 ##       an installation of hicExplorer. for e.g.
 ## 
-conda activate pygenometracks
+conda activate hicexplorerenv
 ## 
 ##
 ## For chromosome 6

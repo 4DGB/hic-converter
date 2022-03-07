@@ -4,7 +4,7 @@
 ## for chromosomes 6 and 22.
 ##
 ## Activate hicenvironment env
-conda activate pygenometracks
+conda activate hicexplorerenv
 ##
 ## For chromosome 22 call pc1 and pc2
 hicPCA -m ../data/h5/ENCLB571GEP.chr22.200kb.h5 -o ../data/bed/ENCLB571GEP.chr22.200kb.pc1.bed ./data/bed/ENCLB571GEP.chr22.200kb.pc2.bed -f bedgraph -we 1 2
