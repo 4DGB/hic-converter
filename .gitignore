@@ -18,3 +18,5 @@
 ./figures/*.png
 ./figures/*.pdf
 ./figures/juicebox/*
+./figures/h5/*
+./figures/tracks/*
