@@ -4,6 +4,8 @@
 # In[ ]:
 
 
+## Converts h5 input to short format
+## By: Cullen Roth
 ## Bring in system mod
 import sys
 
