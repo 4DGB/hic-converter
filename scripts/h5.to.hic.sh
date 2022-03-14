@@ -11,7 +11,7 @@
 ## conda activate hicexplorerenv
 ##
 ## Call the conversion script
-## ./h5.to.hic.sh -m ../data/h5/ENCLB571GEP.chr22.200kb.h5 -g ../sizes/chr22.size.bed -o ../data/hic -V true -R false
+## ./h5.to.hic.sh -m ../data/h5/ENCLB571GEP.chr22.200kb.00.h5 -g ../sizes/chr22.size.bed -o ../data/hic -V true -R false
 ##	
 ## ------------------------------------------------------------------------------------------------------------- ##
 ##
