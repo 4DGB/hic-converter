@@ -6,11 +6,11 @@
 ## Sourced user's zsh file
 source ~/.zshrc
 
-## Activate hicenvironment env
+## Activate hic-environment
 conda activate hicexplorerenv
 
-## For hic data (in h5 format) taken from hour 00 and 12 of dexamethason exsposure 
-## and for chromosomes 6 and 22 plot hic matrix 
+## For hic data (in h5 format) taken from hour 00 and 12 of 
+## dexamethason exsposure and for chromosomes 6 and 22 plot hic matrix 
 for sample in ENCLB571GEP.chr22.200kb.00.h5 ENCLB870JCZ.chr22.200kb.12.h5 ENCLB571GEP.chr6.200kb.00.h5 ENCLB870JCZ.chr6.200kb.12.h5
 do
     hicPlotMatrix --matrix ../data/h5/${sample} --outFileName ../figures/${sample}.png \

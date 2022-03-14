@@ -21,8 +21,8 @@ A collection of scripts used in preprocessing and setup of Hi-C data for the 4DG
     cd ./hic-converter/scripts
 
     ## Make scripts executable
-    chmod +x h5.to.hic.sh
-    chmod +x h5.to.short.py
+    chmod +x *.sh
+    chmod +x *.py
 
 ### Generate a conda environment with an installation of HiCExplorer
     conda create -n hicexplorerenv hicexplorer -c bioconda -c conda-forge

@@ -17,3 +17,4 @@
 ## ignore png and pdf figures
 ./figures/*.png
 ./figures/*.pdf
+./figures/juicebox/*
