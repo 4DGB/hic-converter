@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-## List of commands used to convert h5 file to hic file format for 
+## List of commands used to convert h5 files to hic file format for 
 ## chromosomes 6 and 22 at hours 00 and 12 with 100 nM dexamethasone.
 ## by: Cullen Roth
 
