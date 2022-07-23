@@ -33,7 +33,7 @@ remove=true                                      ## A flag to Remove temporary o
 current=`pwd`                                    ## Cather the current working directory
 outdir=${current}/                               ## Set the output directory
 jarpath='../jar/juicer_tools_1.22.01.jar'        ## Set the path to the juicer jar file within the repo
-helpmessage="\nh5.to.hic.sh [options] -m [h5 matrix] -b [binsize] -g [genome size file]
+helpmessage="\nh5.to.hic.sh [options] -m [h5 matrix] -g [genome size file]
 
 Inputs (required):
 -m The HiC matrix in h5 format to be converted. 
