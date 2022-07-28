@@ -8,7 +8,7 @@
 ## Cullen Roth, PhD, B-GEN Group
 
 ## Set default variables, the level of verbosity, the hic tolerance, out put dir, the path to juicer tools jar
-tolerance, jarpath = int(0.5*(10**6)), '/Users/croth/Downloads/juicer_tools_1.22.01.jar'
+tolerance, jarpath = int(0.5*(10**6)), './juicer_tools_1.22.01.jar'
 
 ## Set the resolutions, the genomeid genome name, and the correction method
 resolutions, correction, outpath = '50000,100000,150000,200000,250000,300000,350000,400000', 'KR', './'

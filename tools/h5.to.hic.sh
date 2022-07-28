@@ -32,7 +32,7 @@ verbose=false                                    ## tells the script not to prin
 remove=true                                      ## A flag to Remove temporary output files made in script
 current=`pwd`                                    ## Cather the current working directory
 outdir=${current}/                               ## Set the output directory
-jarpath='../jar/juicer_tools_1.22.01.jar'        ## Set the path to the juicer jar file within the repo
+jarpath='./juicer_tools_1.22.01.jar'        ## Set the path to the juicer jar file within the repo
 helpmessage="\nh5.to.hic.sh [options] -m [h5 matrix] -g [genome size file]
 
 Inputs (required):
