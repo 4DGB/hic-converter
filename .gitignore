@@ -7,6 +7,9 @@
 ## ignore ds stores
 ./data/*.DS_Store
 
+## ignore large h5 files
+./data/h5/*.h5
+
 ## ignore ipython notebooks and checkpoints
 *.ipynb
 *.ipynb_checkpoints
