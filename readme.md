@@ -12,7 +12,7 @@ A collection of tools, scripts, and commands used in preprocessing and setup of 
     ## Convert the h5 file to hic formated file for chromosome 22
     ./h5.to.hic.sh -m ../data/h5/ENCLB571GEP.chr22.200kb.00.h5 -g ../sizes/chr22.size.bed -o ../data/hic/
 
-### Generating .hic file from summary.txt.gz file
+### Generating a .hic file from .summary.txt.gz file
     ## Change directory to tools
     cd ./hic-converter/tools
 
