@@ -41,7 +41,7 @@ A collection of tools, scripts, and commands used in preprocessing and setup of 
 ### Juicer
 [Juicer tools jar file](https://github.com/aidenlab/juicer/wiki/Download) 
 
-Scripts here were developed using version 1.22.01 ([also stored here on this repo](https://github.com/4DGB/hic-converter/tree/main/jar)).
+Scripts here were developed using version 1.22.01 ([also stored here on this repo](https://github.com/4DGB/hic-converter/tree/main/tools)).
 
 ### Python
 [Anaconda](https://www.anaconda.com/products/individual) 
