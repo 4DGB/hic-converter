@@ -34,6 +34,9 @@ A collection of tools, scripts, and commands used in preprocessing and setup of 
 ### Generate a conda environment with an installation of HiCExplorer
     conda create -n hicexplorerenv hicexplorer -c bioconda -c conda-forge
 
+#### Other needed python libraries
+    os, argparse, numpy, pandas, gzip, subprocess
+
 # Dependencies
 ### Juicer
 [Juicer tools jar file](https://github.com/aidenlab/juicer/wiki/Download) 
