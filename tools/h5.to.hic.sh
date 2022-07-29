@@ -42,7 +42,7 @@ Inputs (required):
     2) the length of the chromosome(s) or contig(s)
 
 Options:
--b The binsize (default: $binsize) or a comma seperated list (with no spaces) of binsizes (e.g. 100000,200000,500000) for final hic file. 
+-b The binsize (default: $binsize) or a comma-seperated list (with no spaces) of binsizes (e.g. 100000,200000,500000) for final hic file. 
 -o Output directory to place new Hi-C contact matrix in hic format (default: $outdir).
 -N The matrix balancing method to use in juicer pre command for hic generation (default: $norm).
 -V Bollean flag to run script in verbose mode, good for debugging (default: $verbose). 
