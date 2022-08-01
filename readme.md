@@ -84,7 +84,17 @@ R1.fastq.gz, R2.fastq.gz -> [juicer pipeline](https://github.com/aidenlab/juicer
 
 ### Formatting with Juicer Pre
 ### Using juicer pre to extract contacts along chromosome 1, with 200 kb resolution, and Knight Runiz correction.
-juicer pre -k KR -r 200000 merged_nodups.txt.gz output.chr1.hic chr1.size.bed
+    juicer pre -k KR -r 200000 merged_nodups.txt.gz output.chr1.hic chr1.size.bed
 
 ### Example data within chr1.size.bed file used above
-chr1	248956422
+    chr1	248956422
+
+## Work Cited
+
+- [Lappala *et al.*](https://www.pnas.org/doi/abs/10.1073/pnas.2107092118) "Four-dimensional chromosome reconstruction elucidates the spatiotemporal reorganization of the mammalian X chromosome." Proceedings of the National Academy of Sciences 118.42 (2021): e2107092118.
+
+- [Marks *et al.*](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0698-x) "Dynamics of gene silencing during X inactivation using allele-specific RNA-seq." *Genome biology* 16.1 (2015): 1-20.
+
+- [Wang *et al.*](https://www.sciencedirect.com/science/article/pii/S0092867418305841) "SMCHD1 merges chromosome compartments and assists formation of super-structures on the inactive X." *Cell* 174.2 (2018): 406-421.
+
+- [Wolff *et al.*](https://hicexplorer.readthedocs.io/en/latest/index.html) "Galaxy HiCExplorer 3: a web server for reproducible Hi-C, capture Hi-C and single-cell Hi-C data analysis, quality control and visualization." *Nucleic acids research* 48.W1 (2020): W177-W184.
