@@ -1,32 +1,33 @@
 # Data used
 
-## Activate and Inactive Chromosome X (.summary.txt.gz files)
+## Activate and inactive chromosome X (.summary.txt.gz files)
+
 Data in .summary.txt.gz format were downloaded from the Gene Expression Omnibus. The first wild-type (WT) replicate from the record GSE99991 with accession record GSM2667262 was used in analysis and development of the *.summary.txt.gz* to *.hic* protocol. Here we store the two haplotype paired files with data on chromosome 13: GSM2667262_WT1.HiC.rep1.cas.chr13.summary.txt.gz and GSM2667262_WT1.HiC.rep1.mus.chr13.summary.txt.gz. The *cas* and *mus* haplotype names correspond to the activate (Xa) and inactive (Xi) chromosome X states. The mm9, Mus musculus reference genome was used in analysis.
 
-## Mouse Embryonic Stem Cells Marks et al. 
+## Hi-C data on mouse embryonic stem cells from Marks *et al.* 
 
 ### Downloading, aligning, and constructing .h5 data
+
 The following code and instructions were modified from a [HicExplorer tutorial]( https://hicexplorer.readthedocs.io/en/latest/content/mES-HiC_analysis.html) on aligning Hi-C data from female mouse, embryonic stem cells. It was adapted to only analyze data for chromosome 13. Additionally only data from the first replicate of [Marks et al. 2015]( https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0698-x) is used in analysis. See the [main page]( https://github.com/4DGB/hic-converter) of this repository for instruction on setting up a python computing environment.
 
 ```
+## Activate the python computing environment
 conda activate hicexplorerenv
+
+## Make directories for analysis
+mkdir -p genome_mm10 fastq bam bwa GRCh38
+
+## Gather the mm10 reference, use wget and tar to unpack the data
+wget http://hgdownload-test.cse.ucsc.edu/goldenPath/mm10/bigZips/chromFa.tar.gz -O genome_mm10/chromFa.tar.gz
+tar -xvzf genome_mm10/chromFa.tar.gz
+
+## Index chromosome 13 via bwa
+bwa index -p bwa/chr13_index genome_mm10/chr13.fa
+
+## Find the *SauIII* restriction sites across the mm10 genome. 
+## Use the *hicFindRestSite* function from HicExplorer to find GATC sites.
+hicFindRestSite --fasta ./genome_mm10/chr13.fa -o chr13_SauIII_cut_sites.bed --searchPattern GATC
 ```
-
-### Make directories for analysis
-    mkdir -p genome_mm10 fastq bam bwa GRCh38
-
-### Gather mm10 reference, use wget and tar to unpack the data
-    wget http://hgdownload-test.cse.ucsc.edu/goldenPath/mm10/bigZips/chromFa.tar.gz -O genome_mm10/chromFa.tar.gz
-    tar -xvzf genome_mm10/chromFa.tar.gz
-
-### Index chromosome 13 via bwa
-    bwa index -p bwa/chr13_index genome_mm10/chr13.fa
-
-### Find restrction sites across the genome 
-Here the SauIII restriction site was used in experiments; it targets and leaves a GATC sites. 
-Use the findsites function from HicExplorer.
-
-    hicFindRestSite --fasta ./genome_mm10/chr13.fa -o chr13_SauIII_cut_sites.bed --searchPattern GATC
 
 ### Download data from Marks et al. for alignment
     wget SRR1956527_1.fastq.gz -O ./fastq/SRR1956527_1.fastq.gz
