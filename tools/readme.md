@@ -1,8 +1,8 @@
 # The Hi-C (.hic) converter tools
-Description of executalbe tools
+Description of executalbe tools.
 
 ## Converting to .h5 to .hic
-"./h5.to.hic.sh" converts input .h5 files to a juicer compatable .hic file
+"./h5.to.hic.sh" converts input .h5 files to a juicer compatable .hic file.
 
     conda activate hicexplorerenv
     ./h5.to.hic -m in.h5 -g chr.size.bed
