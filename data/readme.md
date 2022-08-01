@@ -22,8 +22,7 @@ tar -xvzf genome_mm10/chromFa.tar.gz
 ## Index chromosome 13 via bwa
 bwa index -p bwa/chr13_index genome_mm10/chr13.fa
 
-## Find the *SauIII* restriction sites across the mm10 genome. 
-## Use the *hicFindRestSite* function from HicExplorer to find GATC sites.
+## Use the hicFindRestSite function from HicExplorer to find the SauIII restriction sites (GATC) across the mm10 genome. 
 hicFindRestSite --fasta ./genome_mm10/chr13.fa -o chr13_SauIII_cut_sites.bed --searchPattern GATC
 
 ## Download data from Marks et al. for alignment
