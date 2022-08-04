@@ -1,4 +1,4 @@
-# Data Description
+# Data description
 
 ## Activate and inactive chromosome X (.summary.txt.gz files) from Wang *et al.*
 

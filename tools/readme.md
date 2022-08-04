@@ -1,4 +1,4 @@
-# The Hi-C (.hic) converter tools
+# The hic-converter tools
 Description of executalbe tools.
 
 ## Converting to .h5 to .hic
