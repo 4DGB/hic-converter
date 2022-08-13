@@ -114,8 +114,7 @@ if (contacts == 0):
 
 
 ## Subset data for data in genomesizes file
-temp = temp[(temp[colname[0]].isin(chrlist)) & 
-            (temp[colname[3]].isin(chrlist))].reset_index(drop=True)
+temp = temp[(temp[colname[0]].isin(chrlist)) & (temp[colname[3]].isin(chrlist))].reset_index(drop=True)
 
 ## Gather the new index after dropping samples
 theindex = temp.index.values
