@@ -100,7 +100,7 @@ assert os.path.exists(parent_path), "ERROR: The output parent directory (%s) doe
 assert (hic_path.split('/')[-1][-4:] == '.hic'), "ERROR: The specified extension of the output file name (%s) is not .hic!"%hic_path.split('/')[-1]
 
 ## Set the out name and path of the short file
-short_path = hic_path[:-4] + '.short.gz'
+short_path = hic_path[:-4] + '.short.txt'
 
 # In[4]:
 ## Bring in other needed mods
@@ -117,23 +117,36 @@ with gzip.open(inputpath,'rt') as f:
     
     ## Iterate thru the lines in file
     for line in f:
-        
+
         ## If the chr1 is in the line text, then
         if coi in line:
         
             ## split the line and make into an array
             split = np.array(line.split(' '))
-        
+
             ## Check the chromosome fields for chr1
-            if (split[1] == coi) and (split[5] == coi) and (split[8]==quality) and (split[11] == quality):
+            if (split[1] == coi) and (split[5] == coi) and (int(split[8]) >= quality) and (int(split[11]) >= quality):
+
+                ## Join the line
+                newline = ' '.join(split[fields])+'\n'
+
+                ## Correct name if needed
+                if newname is not None:
+
+                    ## Make the new line
+                    newline = newname.join(newline.split(coi))
             
                 ## If both chr1 and chr2 are the chr of interest, then append fields of interest to list
-                chrlines.append(' '.join(split[fields])+'\n')
+                chrlines.append(newline)
 
         else: ## else pass this line
             pass
     ## Close the file
     f.close()
+
+## Reassign the chromosome name
+if newname is not None:
+    coi = newname
 
 # In[5]:
 ## How many contacts are on this chromosome?
@@ -145,10 +158,10 @@ if verbose:
 
     ## Check if the number of contacts is low
     if (ncontacts < tolerance):
-        print('WARNING: The number of Hi-C contacts (%s) along chromosome %s is lower than set tolerance (%s).'%(ncontacts,coi.split('chr')[-1],tolerance))
+        print('WARNING: The number of Hi-C contacts (%s) along chromosome %s is lower than set tolerance (%s).'%(ncontacts,coi,tolerance))
 
 ## Assert we have data
-assert (ncontacts>0), "ERROR: No Hi-C contacts were detected along chromosome %s"%(coi.split('chr')[-1])
+assert (ncontacts>0), "ERROR: No Hi-C contacts were detected along chromosome %s"%coi
 
 ## Save out the hi-c counts
 if tocount:
@@ -160,11 +173,12 @@ if tocount:
     if verbose:
         print("WARNING: Printing counts to file: %s"%count_path)
         
-    ## Bring in pandas
-    import pandas as pd
+    ## Open the count file path
+    with open(count_path,'w') as f:
 
-    ## Save out data
-    pd.DataFrame([(coi,ncontacts)]).to_csv(count_path,index=False,header=False,sep='\t')
+        ## Write the counts
+        f.writelines('%s\t%s\n'%(coi,ncontacts))
+    f.close()
 
 ## Open a file
 with open(short_path,'w') as f:
@@ -177,37 +191,6 @@ f.close()
 
 ## Check that the short path exists
 assert os.path.exists(short_path), "ERROR: Unable to locate .short file: %s"%short_path
-
-## Rename the short file if needed
-if newname is not None:
-
-    ## Print we are taking this step
-    if verbose:
-        print("Reloading .short file to rename chromosome (%s)."%newname)
-
-    else: ## Otherwise pass
-        pass
-
-    ## Load in the short file
-    temp = pd.read_csv(short_path,sep=' ',header=None)
-
-    ## Check our work
-    assert (temp.shape[0] == ncontacts), "ERROR: Missing Hi-C contacts!\nLoading .short file failed!"
-
-    ## Reset the chromosome names
-    temp.loc[:,1] = newname
-    temp.loc[:,5] = newname
-
-    ## Save out renamed dataframe
-    temp.to_csv(short_path,sep=' ', header=False, index=False, compression='gzip')
-    
-else: ## Otherwise continue
-    
-    if verbose: ## If in verbose mode
-        print("No new chromosome name passed, skipping.")
-
-    else:
-        pass
 
 # In[6]:
 ## Load in subprocess mod
@@ -237,7 +220,7 @@ elif not toclean and verbose:
     print("WARNING: Retaining .short file on path and with name: %s"%short_path)
 
 else:
-    pass #print("WARNING: The .short file was not removed on path and with name: %s"%short_path)
+    pass
 
 ## Finish
 print('Finished :-)')

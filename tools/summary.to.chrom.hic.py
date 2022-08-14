@@ -36,6 +36,7 @@ optional.add_argument("-K", type=str, required=False, help="Calculate specific m
 optional.add_argument("-O", type=str, required=False, help="Output path and name of Hi-C file generated from this script.\nDefault is the same as the input path, replacing the .summary.txt.gz extension with .hic",default=None)
 optional.add_argument("-J", type=str, required=False, help="Path to juicer tools jar file (default: %s)."%jarpath, default=jarpath)
 optional.add_argument("-T", type=int, required=False, help="Lower threshold of Hi-C contacts to flag a potential error (default: %s)."%tolerance, default=tolerance)
+optional.add_argument("-N", type=str, required=False, help="The name used to rename the chromosome within the short file, for example: chr_6a to chr6.\nWARNING: The new name must be in the genome ID or chrom.size file (see -g).", default=None)
 
 ## Set optional, boolean variables
 optional.add_argument("-V", help="Flag to run in verbose mode.\nDefault behavior is false.", action='store_true')
@@ -50,7 +51,7 @@ values = parser.parse_args()
 inputpath, genomeid, coi = values.i, values.g, values.c
 
 ## Set optional variables
-resolutions, correction, outpath, jarpath, tolerance = values.R, values.K, values.O, values.J, values.T
+resolutions, correction, outpath, jarpath, tolerance, newname = values.R, values.K, values.O, values.J, values.T, values.N
 
 ## Set boolean variables
 verbose, toclean, tocount = values.V, values.S, values.C
@@ -127,6 +128,7 @@ with gzip.open(inputpath,'rt') as f:
             
                 ## If both chr1 and chr2 are chr1, then append fields of interest to list
                 chrlines.append(split[fields])
+
         else: ## else pass this line
             pass
     ## Close the file
@@ -188,9 +190,26 @@ data_chr = data_chr[sorted(data_chr.columns)]
 ## Set 4 based on strand
 data_chr[4] = data_chr[7].replace(strand_dict)
 
-## Set column 7 to one and and a score column
+## Set the fragment column (column 7) to one
 data_chr[7] = 1
-data_chr[8] = 31
+
+## Check our work, assert fragment 1 and 2 are different
+assert (np.sum(data_chr[7].values - data_chr[3].values) == data_chr.shape[0]), "ERROR: Missing fragments!"
+
+## Check our work, assert chromosome is in the chrom columns
+assert (coi in data_chr[1].tolist()) and (coi in data_chr[5].tolist()), "ERROR: Missing chromosome names in chromosome column"
+
+## Rename the chromosome columns if needed
+if newname is not None:
+    data_chr[1] = newname
+    data_chr[5] = newname
+
+    ## Reassign the chromosome name
+    coi = newname
+
+## Otherwise do nothing
+else:
+    pass
 
 ## Check our work
 assert (data_chr.shape[0] == ncontacts), "ERROR: We lost data during data reformating!"
