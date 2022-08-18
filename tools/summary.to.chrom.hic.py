@@ -1,9 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-## summary.txt.gz file to .hic protocol (for a single chromosome).
-## Developed by: Cullen Roth, PhD, B-GEN Group.
-## For any issues please email: croth@lanl.gov
+## summary.to.chrom.hic.py
+##
+## Protocol for conversion of summary.txt.gz file to .hic for a single chromosome.
+## Developed by:
+##
+## Cullen Roth, Ph.D.
+##
+## Postdoctoral Research Associate
+## Genomics and Bioanalytics (B-GEN)
+## Los Alamos National Laboratory
+## Los Alamos, NM 87545
+##
+## For help with any issues please email: croth@lanl.gov
 
 # In[0]:
 ## Set default variables, the level of verbosity, the hic tolerance, out put dir, the path to juicer tools jar
@@ -164,7 +173,7 @@ if tocount:
     ## Save out data
     pd.DataFrame([(coi,ncontacts)]).to_csv(count_path,index=False,header=False,sep='\t')
 
-# In[7]:
+# In[6]:
 ## Make a short file for the chromosome. gnerate a strand dictionary
 strand_dict = dict(zip(['+','-'],[0,1]))
 
@@ -220,7 +229,7 @@ data_chr.to_csv(short_path, sep='\t', header=False, index=False, compression='gz
 ## Check that the short path exists
 assert os.path.exists(short_path), "ERROR: Unable to locate .short file: %s"%short_path
 
-# In[10]:
+# In[7]:
 ## Format juicer command, set the jarpath and java call
 juicer_pre = f'java -Xms512m -Xmx2048m -jar {jarpath} pre {short_path} {hic_path} {genomeid} -c {coi} -r {resolutions} -k {correction}'
 
@@ -228,7 +237,6 @@ juicer_pre = f'java -Xms512m -Xmx2048m -jar {jarpath} pre {short_path} {hic_path
 if verbose:
     print(juicer_pre+'\n')
 
-# In[11]:
 ## Load in subprocess mod
 import subprocess 
 

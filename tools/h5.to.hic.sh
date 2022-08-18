@@ -17,10 +17,16 @@
 ##
 ## NOTE: The conda environment (as shown above) with HicExplorer will be unique to the user
 ## 
-## For help or to report any issues email 
-##  Cullen Roth, B-GEN group
-##      at 
-##  croth@lanl.gov
+## Developed by:
+##
+## Cullen Roth, Ph.D.
+##
+## Postdoctoral Research Associate
+## Genomics and Bioanalytics (B-GEN)
+## Los Alamos National Laboratory
+## Los Alamos, NM 87545
+##
+## For help with any issues please email: croth@lanl.gov
 ## 
 ## ------------------------------------------------------------------------------------------------------------- ##
 ## 
@@ -113,7 +119,7 @@ echo "   tsv --> short"
 echo "Converting ginteractions file to sorted, short file."
 
 ## Envoke our h5 to short python script
-h5.to.short.py ${tempname}.ginteractions.tsv $genomesizes ${tempname}.short $verbose
+gin.to.short.py -i ${tempname}.ginteractions.tsv -g $genomesizes -o ${tempname}.short -V
 
 ## Call juicer
 echo " "
