@@ -74,7 +74,7 @@ assert (genomeid in referances) or os.path.exists(genomeid), "ERROR: The genome 
 corrections = ['VC', 'VC_SQRT', 'KR', 'SCALE']
 
 ## Check that the specified correction method is within this list
-assert (correction in corrections), "ERROR: Unknown specified matrix correction.\nSelect from: %s!"%', '.join(corrections)
+assert (correction in corrections), "ERROR: Unknown specified matrix correction.\nSelect from: < %s > !"%', '.join(corrections)
 
 # In[3]:
 ## Check that the input path existis

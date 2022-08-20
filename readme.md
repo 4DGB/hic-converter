@@ -25,6 +25,16 @@ cd ./hic-converter/tools
 ./summary.to.chrom.hic.py -i ../data/summary/GSM2667262_WT1.HiC.rep1.mus.chr13.summary.txt.gz -g mm9 -c chr13 -O ../data/hic/GSM2667262_WT1.HiC.rep1.mus.chr13.hic
 ```
 
+### Generte a .hic file from juicer merged_nodups (long format) file for chromosome 22
+
+```
+## Activate hic-explorer environment
+conda activate hicexplorerenv
+
+## Envoke our long to chrom hic function
+./long.to.chrom.hic.py -i ..data/txt/merged_nodups.chr22.txt.gz -g ..data/sizes/GRCh38.chr22.size.bed -c chr22 -O ../data/hic/chr22.10kb.hic -R 10000
+````
+
 ## Installation
 ### Download and set up
 

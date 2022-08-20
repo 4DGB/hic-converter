@@ -11,7 +11,7 @@ It requires a python environment with HiCExplorer installed. See main page for d
 
 1) in.h5 -> [hicConvertFromat](https://hicexplorer.readthedocs.io/en/latest/content/tools/hicConvertFormat.html) -> out.ginteractions.tsv
 
-2) in.ginteratcions.tsv -> h5.to.short.py -> out.short.gz
+2) in.ginteratcions.tsv -> gin.to.short.py -> out.short.gz
 
 3) in.short.gz -> [juicer pre](https://github.com/aidenlab/juicer/wiki/Pre) -> out.hic
        
