@@ -16,7 +16,6 @@ cd ./hic-converter/tools
 
 ## Convert a summary.txt.gz file to an .hic file for a single chromosome
 ./summary.to.chrom.hic.py -i ../data/summary/GSM2667262_WT1.HiC.rep1.cas.chr13.summary.txt.gz -g mm9 -c chr13 -O ../data/hic/GSM2667262_WT1.HiC.rep1.cas.chr13.hic
-
 ```
 
 ## Hi-C data on mouse embryonic stem cells from Marks *et al.* 
@@ -58,7 +57,6 @@ hicBuildMatrix --samFiles ./bam/SRR1956527_1_chr13.bam ./bam/SRR1956527_2_chr13.
     --restrictionSequence GATC --danglingSequence GATC --restrictionCutFile ./genome_mm10/chr13_SauIII_cut_sites.bed \
     --threads 5 --inputBufferSize 400000 \
     --QCfolder ./SRR1956527_chr13_QC --outFileName ./h5/SRR1956527_chr13.h5
-
 ```
 
 ## A549 Cells From the ENCODE Project
@@ -100,7 +98,6 @@ hicBuildMatrix --samFiles ./bam/ENCFF668EDF_R1_001.bam ./bam/ENCFF398SQH_R2_001.
     --threads 4 --inputBufferSize 200000 \
     --restrictionSequence GATC --danglingSequence GATC --restrictionCutFile ./GRCh38/GRCh38_MboI_cut_sites.bed \
     --QCfolder ENCLB870JCZ.chr22.12hr --outFileName ./h5/ENCLB870JCZ.chr22.200kb.12hr.h5
-    
 ```
 
 ### Converting the chromosome 22 *.h5* contact map to *.hic*
@@ -111,5 +108,4 @@ cd ./hic-converter/tools
 
 ## Convert a summary.txt.gz file to an .hic file for a single chromosome
 ./h5.to.hic.sh -m ../data/h5/ENCLB870JCZ.chr22.200kb.12hr.h5 -g ../data/sizes/GRCh38.chr22.size.bed -o ../data/hic/ENCLB870JCZ.chr22.200kb.12hr.hic
-
 ```
