@@ -37,14 +37,14 @@ norm=KR                                          ## The matrix balancing used in
 verbose=false                                    ## tells the script not to print to screen
 remove=true                                      ## A flag to Remove temporary output files made in script
 jarpath='./juicer_tools_1.22.01.jar'             ## Set the path to the juicer jar file within the repo
-helpmessage="\nh5.to.hic.sh [options] -m [h5 matrix] -g [genome size file]
+helpmessage="\nh5.to.hic.sh [options] -m [h5 matrix] -g [genome size file] -o [output path]
 
 Inputs (required):
 -m The Hi-C contact map in h5 format to be converted. 
--o The path to output the new .hic, Hi-C contact map.
 -g A chromosome (or genome) size file. This is a tsv file with two columns:
     1) the chromosome(s) or contig(s) name(s)
     2) the length of the chromosome(s) or contig(s)
+-o The path to output the new .hic, Hi-C contact map.
 
 Options:
 -b The binsize (default: $binsize) or a comma-seperated list (with no spaces) of binsizes (e.g. 100000,200000,500000) for final hic file. 
@@ -54,7 +54,7 @@ Options:
 -J Path to juicer tools jar file (default: $jarpath).
 
 Dependencies include: juicer tools, python3, and HiCExplorer.\n
-Example usage:\nconda activate hicexplorer\n\nh5.to.hic.sh -m in.h5 -g chr.size.bed\n\n"
+Example usage:\nconda activate hicexplorer\n\nh5.to.hic.sh -m in.h5 -g chr.size.bed -o out.hic\n\n"
 ## 
 ## ------------------------------------------------------------------------------------------------------------- ##
 ## Gather Variables
@@ -119,7 +119,7 @@ echo "   tsv --> short"
 echo "Converting ginteractions file to sorted, short file."
 
 ## Envoke our h5 to short python script
-gin.to.short.py -i ${tempname}.ginteractions.tsv -g $genomesizes -o ${tempname}.short -V
+./gin.to.short.py -i ${tempname}.ginteractions.tsv -g $genomesizes -o ${tempname}.short -V
 
 ## Call juicer
 echo " "

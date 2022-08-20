@@ -195,7 +195,7 @@ else:
 intra = temp[(temp.chrom1==temp.chrom2)]
 
 ## Check that there are contacts within chromosomes
-assert (intra.shape[0] == 0), "ERROR: Zero intra-chromosomal contacts detected."
+assert (intra.shape[0] != 0), "ERROR: Zero intra-chromosomal contacts detected."
 
 ## Check the shape and number of intra-chromosome contacts
 if verbose:
