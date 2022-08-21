@@ -32,8 +32,8 @@ optional = parser.add_argument_group('optional arguments')
 
 ## Set required variables, 
 required.add_argument("-i", type=str, required=True, help="Path to input .summary.txt.gz file for analysis.\nThis script assumes the file is g-zipped.\nMust provide a relative path.", metavar='./path/to/ginteractions.tsv')
-required.add_argument("-g", type=str, required=True, help="Path of the chrom.sizes.tsv file that lists the name and size of the chromosomes in order.")
-required.add_argument("-o", type=str, required=True, help="Output path and name of the short file generated from this script.")
+required.add_argument("-g", type=str, required=True, help="Path of the chrom.sizes.tsv file that lists the name and size of the chromosomes in order.", metavar='./path/to/chrom.sizes.tsv')
+required.add_argument("-o", type=str, required=True, help="Output path and name of the short file generated from this script.", metavar='./output/path/out.short')
 
 ## Set optional, boolean variables
 optional.add_argument("-V", help="Flag to run in verbose mode.\nDefault behavior is false.", action='store_true')

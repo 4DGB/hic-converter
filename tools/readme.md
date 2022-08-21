@@ -1,11 +1,17 @@
 # The hic-converter tools
 Description of executalbe tools.
 
-## Converting to .h5 to .hic
-"./h5.to.hic.sh" converts input .h5 files to a juicer compatable .hic file.
+## Conversion of ginteractions file to short file
+"gin.to.short.py" converts an input ginteractions file a short file.
+
+    ./gin.to.short.py -i ./path/to/ginteractions.tsv -g ./path/to/chrom.sizes.tsv -o ./output/path/out.short
+
+## Converting an .h5 file to an .hic
+"h5.to.hic.sh" converts input .h5 files to a juicer compatable .hic file.
 
     conda activate hicexplorerenv
-    ./h5.to.hic -m in.h5 -g chr.size.bed
+
+    ./h5.to.hic.sh -m ./path/to/in.h5 -g ./path/to/chrom.size.bed -o ./path/to/out.hic
 
 It requires a python environment with HiCExplorer installed. See main page for details. This script utlizes conversion functions from HiCExplorer, custom python scripting, and juicer tools to convert an .h5 file to a .hic file. 
 
@@ -15,11 +21,11 @@ It requires a python environment with HiCExplorer installed. See main page for d
 
 3) in.short.gz -> [juicer pre](https://github.com/aidenlab/juicer/wiki/Pre) -> out.hic
        
-## Converting from .summary.txt.gz to .hic
+## Converting from .summary.txt.gz to .hic file
 
-"./summary.to.chrom.hic.py" converts input .summary.txt.gz to an output .hic file. 
+"summary.to.chrom.hic.py" converts input .summary.txt.gz to an output .hic file. 
 
-    ./summary.to.chrom.hic.py -i input.summary.txt.gz -g genome.id -c chrom.name
+    ./summary.to.chrom.hic.py -i ./path/to/the.summary.gz.txt -g Genome ID -c chromosome name
 
 As input, the script expects a g-zipped summary.txt file (as seen and stored on the Gene Expression Omnibus), a genome.id (for example mm9, mm10, hg18 or hg19), and a chromosome name. The current version of this script only converts data for a single chromosome. This script was built using a python environment (v3.8.8) with the following python libraries:
     * argparse
@@ -28,3 +34,9 @@ As input, the script expects a g-zipped summary.txt file (as seen and stored on 
     * numpy
     * gzip
     * subprocess
+
+## Formationg a .hic file from merged_nodups.txt file
+
+"long.to.chrom.hic.py" generates an .hic file from the long format file (i.e. a merged_nodupts.txt) [from the juicer pipeline output](https://github-wiki-see.page/m/aidenlab/juicer/wiki/Pre).
+
+    ./long.to.chrom.hic.py -i ./path/to/merged_nodups.txt.gz -g Genome ID -c chromosome name

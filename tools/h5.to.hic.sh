@@ -54,7 +54,7 @@ Options:
 -J Path to juicer tools jar file (default: $jarpath).
 
 Dependencies include: juicer tools, python3, and HiCExplorer.\n
-Example usage:\nconda activate hicexplorer\n\nh5.to.hic.sh -m in.h5 -g chr.size.bed -o out.hic\n\n"
+Example usage:\nconda activate hicexplorer\n\n./h5.to.hic.sh -m ./path/to/in.h5 -g ./path/to/chrom.size.bed -o ./path/to/out.hic\n\n"
 ## 
 ## ------------------------------------------------------------------------------------------------------------- ##
 ## Gather Variables

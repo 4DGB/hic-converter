@@ -31,8 +31,11 @@ cd ./hic-converter/tools
 ## Activate hic-explorer environment
 conda activate hicexplorerenv
 
+## Change directory to tools
+cd ./hic-converter/tools
+
 ## Envoke our long to chrom hic function
-./long.to.chrom.hic.py -i ..data/txt/merged_nodups.chr22.txt.gz -g ..data/sizes/GRCh38.chr22.size.bed -c chr22 -O ../data/hic/chr22.10kb.hic -R 10000
+./long.to.chrom.hic.py -i ../data/long/merged_nodups.chr22.subsampled.txt.gz -g ../data/sizes/GRCh38.chr22.size.bed -c chr22 -O ../data/hic/chr22.10kb.hic -R 10000
 ````
 
 ## Installation
@@ -101,10 +104,12 @@ R1.fastq.gz, R2.fastq.gz -> [juicer pipeline](https://github.com/aidenlab/juicer
 
 ## Work Cited
 
-- [Lappala *et al.*](https://www.pnas.org/doi/abs/10.1073/pnas.2107092118) "Four-dimensional chromosome reconstruction elucidates the spatiotemporal reorganization of the mammalian X chromosome." Proceedings of the National Academy of Sciences 118.42 (2021): e2107092118.
-
 - [Marks *et al.*](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0698-x) "Dynamics of gene silencing during X inactivation using allele-specific RNA-seq." *Genome biology* 16.1 (2015): 1-20.
+
+- [Durand *et al.*](https://www.sciencedirect.com/science/article/pii/S2405471216302198) "Juicer provides a one-click system for analyzing loop-resolution Hi-C experiments." *Cell systems* 3.1 (2016): 95-98.
 
 - [Wang *et al.*](https://www.sciencedirect.com/science/article/pii/S0092867418305841) "SMCHD1 merges chromosome compartments and assists formation of super-structures on the inactive X." *Cell* 174.2 (2018): 406-421.
 
 - [Wolff *et al.*](https://hicexplorer.readthedocs.io/en/latest/index.html) "Galaxy HiCExplorer 3: a web server for reproducible Hi-C, capture Hi-C and single-cell Hi-C data analysis, quality control and visualization." *Nucleic acids research* 48.W1 (2020): W177-W184.
+
+- [Lappala *et al.*](https://www.pnas.org/doi/abs/10.1073/pnas.2107092118) "Four-dimensional chromosome reconstruction elucidates the spatiotemporal reorganization of the mammalian X chromosome." Proceedings of the National Academy of Sciences 118.42 (2021): e2107092118.

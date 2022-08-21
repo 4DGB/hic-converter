@@ -36,20 +36,20 @@ optional = parser.add_argument_group('optional arguments')
 
 ## Set required variables, 
 required.add_argument("-i", type=str, required=True, help="Path to input .summary.txt.gz file for analysis.\nThis script assumes the file is g-zipped.\nMust provide a relative path.", metavar='./path/to/the.summary.gz.txt')
-required.add_argument("-g", type=str, required=True, help="Genome ID (for example: hg18, hg19, hg38, mm9, or mm10) used in analysis.")
-required.add_argument("-c", type=str, required=True, help="Name of the chromosome to parse Hi-C contacts on.")
+required.add_argument("-g", type=str, required=True, help="Genome ID (for example: hg18, hg19, hg38, mm9, or mm10) used in analysis.",metavar='Genome ID')
+required.add_argument("-c", type=str, required=True, help="Name of the chromosome to parse Hi-C contacts on.",metavar='chromosome name')
 
 ## Set option variables
-optional.add_argument("-R", type=str, required=False, help="Comma-seperated list of resolutions (in bp) for Hi-C map construction (default: %s)."%resolutions, default=resolutions)
-optional.add_argument("-K", type=str, required=False, help="Calculate specific matrix normalization and correction.\nList of built-in normalizations: VC, VC_SQRT, KR, and SCALE (default: %s)."%correction, default=correction)
-optional.add_argument("-O", type=str, required=False, help="Output path and name of Hi-C file generated from this script.\nDefault is the same as the input path, replacing the .summary.txt.gz extension with .hic",default=None)
-optional.add_argument("-J", type=str, required=False, help="Path to juicer tools jar file (default: %s)."%jarpath, default=jarpath)
-optional.add_argument("-T", type=int, required=False, help="Lower threshold of Hi-C contacts to flag a potential error (default: %s)."%tolerance, default=tolerance)
-optional.add_argument("-N", type=str, required=False, help="The name used to rename the chromosome within the short file, for example: chr_6a to chr6.\nWARNING: The new name must be in the genome ID or chrom.size file (see -g).", default=None)
+optional.add_argument("-R", type=str, required=False, help="Comma-seperated list of resolutions (in bp) for Hi-C map construction (default: %s)."%resolutions, default=resolutions,metavar='10000,100000,200000,1000000')
+optional.add_argument("-K", type=str, required=False, help="Calculate specific matrix normalization and correction.\nList of built-in normalizations: VC, VC_SQRT, KR, and SCALE (default: %s)."%correction, default=correction, metavar='KR')
+optional.add_argument("-O", type=str, required=False, help="Output path and name of Hi-C file generated from this script.\nDefault is the same as the input path, replacing the .summary.txt.gz extension with .hic",default=None, metavar='./path/to/out.hic')
+optional.add_argument("-J", type=str, required=False, help="Path to juicer tools jar file (default: %s)."%jarpath, default=jarpath, metavar=jarpath)
+optional.add_argument("-T", type=int, required=False, help="Lower threshold of Hi-C contacts to flag a potential error (default: %s)."%tolerance, default=tolerance, metavar=tolerance)
+optional.add_argument("-N", type=str, required=False, help="The name used to rename the chromosome within the short file, for example: chr_6a to chr6.\nWARNING: The new name must be in the genome ID or chrom.size file (see -g).", default=None,metavar='new name')
 
 ## Set optional, boolean variables
 optional.add_argument("-V", help="Flag to run in verbose mode.\nDefault behavior is false.", action='store_true')
-optional.add_argument("-S", help="Flag to keep intermitant .short file generated during conversion.\nDefault behavior is to remove the .short file", action='store_false')
+optional.add_argument("-S", help="Flag to keep intermittent .short file generated during conversion.\nDefault behavior is to remove the .short file", action='store_false')
 optional.add_argument("-C", help="Flag to save out the number of Hi-C contacts to file.\nDefault behavior is to skip this step.", action='store_true')
 
 ## Set the paresed values
