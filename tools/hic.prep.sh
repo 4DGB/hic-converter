@@ -6,8 +6,8 @@
 ## conda activate hicexplorerenv
 ##
 ## Call the conversion script
-##./h5.to.hic.sh -m ../data/h5/SRR1956527_chr13.h5 -g ../data/sizes/mm10.chr13.size.bed -o ../data/hic/SRR1956527_chr13.200kb.hic
-##
+## ./hic.prep.sh -m ../data/h5/ENCLB571GEP.chr22.200kb.00.h5 -g ../data/sizes/chr22.size.bed -o ../data/hic -V true -R false
+## ------------------------------------------------------------------------------------------------------------- ##
 ## NOTE: The conda environment (as shown above) with HicExplorer will be unique to the user
 ## 
 ## Developed by:
@@ -20,17 +20,17 @@
 ## Los Alamos, NM 87545
 ##
 ## For help with any issues please email: croth@lanl.gov
-## ------------------------------------- Set default variables and help message --------------------------------------------- ##
-## 
+## ------------------------------------------------------------------------------------------------------------- ##
+## Set default variables and help message
 binsize=200000                                   ## Set the default binsize for contact map to 200 kb
 norm=KR                                          ## The matrix balancing used in hic generation
 verbose=false                                    ## tells the script not to print to screen
 remove=true                                      ## A flag to Remove temporary output files made in script
 jarpath='./juicer_tools_1.22.01.jar'             ## Set the path to the juicer jar file within the repo
-helpmessage="\nh5.to.hic.sh [options] -m [h5 matrix] -g [genome size file] -o [output path]
+helpmessage="\nh5.to.hic.sh [options] -m [contact matrix] -g [genome size file] -o [output path]
 
 Inputs (required):
--m The Hi-C contact map in h5 format to be converted. 
+-m The Hi-C chromosome contact data in .hic format to be converted.
 -g A chromosome (or genome) size file. This is a tsv file with two columns:
     1) the chromosome(s) or contig(s) name(s)
     2) the length of the chromosome(s) or contig(s)
@@ -44,11 +44,12 @@ Options:
 -J Path to juicer tools jar file (default: $jarpath).
 
 Dependencies include: juicer tools, python3, and HiCExplorer.\n
-Example usage:\nconda activate hicexplorer\n\n./h5.to.hic.sh -m ./path/to/in.h5 -g ./path/to/chrom.size.bed -o ./path/to/out.hic\n\n"
-## -------------------------------------------- Gather Variables ---------------------------------------------------------- ##
+Example usage:\nconda activate hicexplorer\n\n./hic.prep.sh -m ./path/to/in.hic -g ./path/to/chrom.size.bed -o ./path/to/out.hic\n\n"
+## ------------------------------------------------------------------------------------------------------------- ##
+## Gather Variables
 while getopts "m:o:g:b:N:V:R:J:h" opt; do
     case $opt in
-        m) h5=$OPTARG;;
+        m) hic=$OPTARG;;
         o) outdir=$OPTARG;;
         g) genomesizes=$OPTARG;;
         b) binsize=$OPTARG;;
@@ -62,14 +63,16 @@ while getopts "m:o:g:b:N:V:R:J:h" opt; do
             exit;;
     esac
 done
+
 ## Check if any arguments are unknown or missing and print help
 if [ $OPTIND -eq 1 ]; then
     printf "$helpmessage"
     exit
 fi
-## ------------------------------------------------ Set up ---------------------------------------------------------------- ##
+## Convert to a hic matrix
+## ------------------------------------------------------------------------------------------------------------- ##
 ## Set the temporary name
-tempname=${h5}.toberemoved
+tempname=${hic}.toberemoved
 
 ## Make alias' callable 
 shopt -s expand_aliases
@@ -79,17 +82,22 @@ alias juicer='java -Xms512m -Xmx2048m -jar $jarpath'
 
 ## Print juicer path if verbose
 if $verbose ; then
-    echo 
     echo "WARNING: Printing juicer pre help message."
 	echo `juicer pre --help`
     echo 
 fi
-## -------------------------------------------- File Conversion ---------------------------------------------------------- ##
+## ------------------------------------------------------------------------------------------------------------- ##
 ## Convert to gene interactions file from h5
-echo -e "   h5 --> tsv\nConverting h5 matrix to ginteractions (tsv) file via hicConvertFormat.\n"
+echo -e "  hic --> cool\nConverting hic matrix to cool file via hicConvertFormat.\n"
+
+## Call hic converter from HiCExplorer, convert hic to coool
+hicConvertFormat -m $hic -o ${tempname}.cool --inputFormat hic --outputFormat cool
+
+## Print to screen 
+echo -e "\n cool --> tsv\nConverting cool hic matrix to ginteractions (tsv) file via hicConvertFormat.\n"
 
 ## Call hic converter from HiCExplorer
-hicConvertFormat -m $h5 -o ${tempname}.ginteractions --inputFormat h5 --outputFormat ginteractions
+hicConvertFormat -m ${tempname}.cool -o ${tempname}.ginteractions --inputFormat cool --outputFormat ginteractions
 
 ## Convert tsv to shorted short file
 echo -e "  tsv --> short\nConverting ginteractions file to sorted, short file.\n"
@@ -102,16 +110,18 @@ echo -e "\nshort --> hic\nActivating juicer pre and converting short file to hic
 
 ## Call juicer for the chromosome for all the binsizes in binsize
 juicer pre -k $norm -r $binsize ${tempname}.short $outdir $genomesizes
-## ---------------------------------------- Remove the temporary files -------------------------------------------------- ##
+## ------------------------------------------------------------------------------------------------------------- ##
+## Remove the temporary files
 if $remove ; then
+
 ## If true print to screen that we are removing these files
     if $verbose ; then
-        echo " "
-        echo "Removing temporary files ...\n"
+        echo -e "Removing temporary files ...\n"
     fi 
 
     ## remove files
     rm ${tempname}*
 fi 
+
 ## Fin
 echo "Done :-)"

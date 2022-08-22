@@ -12,7 +12,7 @@ conda activate hicexplorerenv
 cd ./hic-converter/tools
 
 ## Convert the .h5 file to .hic formated file for Mus musculus chromosome 13
-./h5.to.hic.sh -m ../data/h5/SRR1956527_chr13.h5 -g ..data/sizes/mm10.chr13.size.bed -o ../data/hic/
+./h5.to.hic.sh -m ../data/h5/SRR1956527_chr13.h5 -g ../data/sizes/mm10.chr13.size.bed -o ../data/hic/SRR1956527_chr13.200kb.hic
 ```
 
 ### Generating a .hic file from .summary.txt.gz file
@@ -22,7 +22,7 @@ cd ./hic-converter/tools
 cd ./hic-converter/tools
 
 ## Convert a summary.txt.gz file to an .hic file for a single chromosome
-./summary.to.chrom.hic.py -i ../data/summary/GSM2667262_WT1.HiC.rep1.mus.chr13.summary.txt.gz -g mm9 -c chr13 -O ../data/hic/GSM2667262_WT1.HiC.rep1.mus.chr13.hic
+./summary.to.chrom.hic.py -i ../data/summary/GSM2667262_WT1.HiC.rep1.mus.chr13.summary.txt.gz -g mm9 -c chr13 -O ../data/hic/GSM2667262_WT1.HiC.rep1.mus.chr13.200kb.hic
 ```
 
 ### Convert juicer merged_nodups (long format) file for chromosome 22 to .hic

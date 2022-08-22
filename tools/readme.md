@@ -13,11 +13,11 @@ Description of executalbe tools.
 
     ./h5.to.hic.sh -m ./path/to/in.h5 -g ./path/to/chrom.size.bed -o ./path/to/out.hic
 
-It requires a python environment with HiCExplorer installed. See main page for details. This script utlizes conversion functions from HiCExplorer, custom python scripting, and juicer tools to convert an .h5 file to a .hic file. 
+It requires a python environment with HiCExplorer installed (see main page for details). This script utlizes conversion functions from HiCExplorer, custom python scripting, and juicer tools to convert an .h5 file to a .hic file. 
 
 1) in.h5 -> [hicConvertFromat](https://hicexplorer.readthedocs.io/en/latest/content/tools/hicConvertFormat.html) -> out.ginteractions.tsv
 
-2) in.ginteratcions.tsv -> gin.to.short.py -> out.short.gz
+2) in.ginteractions.tsv -> gin.to.short.py -> out.short.gz
 
 3) in.short.gz -> [juicer pre](https://github.com/aidenlab/juicer/wiki/Pre) -> out.hic
        
@@ -40,3 +40,21 @@ As input, the script expects a g-zipped summary.txt file (as seen and stored on 
 "long.to.chrom.hic.py" generates an .hic file from the long format file (i.e. a merged_nodupts.txt) [from the juicer pipeline output](https://github-wiki-see.page/m/aidenlab/juicer/wiki/Pre).
 
     ./long.to.chrom.hic.py -i ./path/to/merged_nodups.txt.gz -g Genome ID -c chromosome name
+
+## Preparing a .hic file for the 4D-Genome Browser
+
+"hic.prep.sh" brings in data from a multi-resolution hic file and converts it to a .hic file compatable with the 4D-Genome Browser (i.e single resolution with KR matrix correction). 
+
+    conda activate hicexplorerenv
+
+    ./hic.prep.sh -m ./path/to/in.hic -g ./path/to/chrom.size.bed -o ./path/to/out.hic
+
+This function utlizes conversion functions from HiCExplorer, custom python scripting, and juicer tools to format an input .hic file to a .hic file analysis in the 4D-Genome Browser. 
+
+1) in.hic -> [hicConvertFromat](https://hicexplorer.readthedocs.io/en/latest/content/tools/hicConvertFormat.html) -> out.cool
+
+2) in.cool -> hicConvertFromat -> out.ginteractions.tsv
+
+3) in.ginteractions.tsv -> gin.to.short.py -> out.short.gz
+
+4) in.short.gz -> [juicer pre](https://github.com/aidenlab/juicer/wiki/Pre) -> out.hic
