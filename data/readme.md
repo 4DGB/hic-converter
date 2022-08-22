@@ -69,6 +69,9 @@ The data listed here was generated for the ENCODE project by the Reddy lab at Du
 ## Set the working directory
 cd ./hic-converter/data
 
+## Activate hic-explorer environment
+conda activate hicexplorerenv
+
 ## Make directories for analysis.
 mkdir -p GRCh38 fastq bam bwa
 
@@ -103,6 +106,9 @@ hicBuildMatrix --samFiles ./bam/ENCFF668EDF_R1_001.bam ./bam/ENCFF398SQH_R2_001.
 ### Converting the chromosome 22 *.h5* contact map to *.hic*
 
 ```
+## Activate hic-explorer environment
+conda activate hicexplorerenv
+
 ## Change directory to tools
 cd ./hic-converter/tools
 
