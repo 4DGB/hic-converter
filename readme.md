@@ -45,12 +45,8 @@ cd ./hic-converter/tools
 ## Clone this repo
 git clone git@github.com:4DGB/hic-converter.git
 
-## Change directory to *tools*
-cd ./hic-converter/tools
-
 ## Make scripts within the *tools* directory executable
-chmod +x *.sh
-chmod +x *.py
+chmod +x ./hic-converter/tools/*.sh ./hic-converter/tools/*.py
 ```
 
 ### Generate a conda environment with an installation of HiCExplorer
