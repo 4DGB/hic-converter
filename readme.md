@@ -1,6 +1,23 @@
 # hic-converter
 A collection of tools, commands, and data used in preprocessing and setup of Hi-C data for the 4D-Genome Browser (4DGB) Project.
 
+## Getting started and installation
+### Download and set up
+
+```
+## Clone this repo, this will make a local folder named "hic-converter"
+git clone git@github.com:4DGB/hic-converter.git
+
+## Make scripts within the *tools* directory executable
+chmod +x ./hic-converter/tools/*.sh ./hic-converter/tools/*.py
+```
+
+### Generate a conda environment with an installation of HiCExplorer
+```
+## This will also add the needed python libraries, os, argparse, numpy, pandas, gzip, and subprocess
+conda create -n hicexplorerenv hicexplorer -c bioconda -c conda-forge
+```
+
 ## Example usage
 ### Converting contact matrix from HiCExplorer as an .h5 file to a contact matrix with .hic
     
@@ -37,25 +54,6 @@ cd ./hic-converter/tools
 ## Envoke our long to chrom hic function
 ./long.to.chrom.hic.py -i ../data/long/merged_nodups.chr22.subsampled.txt.gz -g ../data/sizes/GRCh38.chr22.size.bed -c chr22 -O ../data/hic/chr22.10kb.hic -R 10000
 ````
-
-## Installation
-### Download and set up
-
-```
-## Clone this repo
-git clone git@github.com:4DGB/hic-converter.git
-
-## Make scripts within the *tools* directory executable
-chmod +x ./hic-converter/tools/*.sh ./hic-converter/tools/*.py
-```
-
-### Generate a conda environment with an installation of HiCExplorer
-```
-conda create -n hicexplorerenv hicexplorer -c bioconda -c conda-forge
-```
-
-#### Other needed python libraries
-    os, argparse, numpy, pandas, gzip, subprocess
 
 ## Dependencies
 ### Juicer
