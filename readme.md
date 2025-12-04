@@ -86,6 +86,7 @@ juicer pre in.short out.chr22.200kb.hic ./sizes/GRCH37.chr22.size.bed -r 200000 
 The file 'GRCH37.chr22.size.bed' is a simple, two-column, tab-delimited text file, with no header/column names. 
 It contains the sequence name of the chromosome targeted for conversion (i.e. chr22) and the length in base pairs (bp) of that chromosome (for example 50,818,468). 
 These sizes for human chromosomes and for chromosomes of other species can be found on the UCSC Genome Browser or ENCODE project websites.
+It is expected that users will have to make their own size files for the conversion tools. 
 
 ## Example Hi-C creation and formatting
 ### Pipeline(s) outline and file outputs
