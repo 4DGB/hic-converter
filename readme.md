@@ -78,8 +78,14 @@ shopt -s expand_aliases
 alias juicer='java -Xms512m -Xmx2048m -jar ./tools/juicer_tools_1.22.01.jar'
 
 ## Splitting off single chromosome (chromosome 22) data from large Hi-C file that is KR balanced and resolved at 200 kb
-juicer pre in.short out.chr22.200kb.hic ./sizes/chr22.size.bed -r 200000 -k KR
+juicer pre in.short out.chr22.200kb.hic ./sizes/GRCH37.chr22.size.bed -r 200000 -k KR
 ```
+
+#### A Note on size file:
+
+The file 'GRCH37.chr22.size.bed' is a simple, two-column, tab-sperated text file, with no header/column names. 
+It contains the sequence nems of the chromosome begin converted (i.e. chr22) and the length in basepairs (bp) of that chromosome. 
+These sizes for human chromosomes and for chromosomes of other species can be found on the UCSC Genome Browser or ENCODE project websites. 
 
 ## Example Hi-C creation and formatting
 ### Pipeline(s) outline and file outputs
