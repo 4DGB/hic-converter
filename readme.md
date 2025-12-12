@@ -28,7 +28,7 @@ conda activate hicexplorerenv
 ## Change directory to tools
 cd ./hic-converter/tools
 
-## Convert the .h5 file to .hic formated file for Mus musculus chromosome 13
+## Convert the .h5 file to .hic formatted file for Mus musculus chromosome 13
 ./h5.to.hic.sh -m ../data/h5/SRR1956527_chr13.h5 -g ../data/sizes/mm10.chr13.size.bed -o ../data/hic/SRR1956527_chr13.200kb.hic
 ```
 
