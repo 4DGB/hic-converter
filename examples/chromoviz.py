@@ -17,6 +17,9 @@ Helpers for:
 """
 ## Load in mods 
 import numpy as np, pandas as pd, pyvista as pv
+## Set the back end of the pyvista ftns
+pv.set_jupyter_backend("static")
+## Load in spline ftns from scipy
 from scipy.interpolate import splprep, splev
 ## Load in glob 
 from glob import glob
@@ -448,17 +451,12 @@ def plot_two_chromosomes_centromere(modelA_spline,modelB_spline,genomic_A,genomi
     else:
         plotter.show()
 
-def plot_chromosomes_centromere_grid(
-        models_points,
-        models_splines,
-        genomics,
-        cen_starts,
-        cen_ends,
-        tube_radius=0.01,
+def plot_chromosomes_centromere_grid(models_points,models_splines,genomics,cen_starts,cen_ends,
+        tube_radius=0.1,
         save_path=None,
         window_size=(1024, 1024),
         view_vector=None,
-        zoom=1.45,
+        zoom=1.25,
         radius_values_list=None,
         p_color="tab:green",
         cen_color="w",
@@ -467,7 +465,7 @@ def plot_chromosomes_centromere_grid(
         n_rows=2,
         n_cols=2,
         titles=None,
-        background_color="grey",
+        background_color="w",
     ):
     """
     Plot multiple chromosomes in an n_rows x n_cols grid, colored by
