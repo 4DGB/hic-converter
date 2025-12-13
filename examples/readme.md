@@ -10,9 +10,10 @@ With the environment.yml file in this folder make the python environment for plo
 conda env create -f environment.yml -n chromo-env
 ```
 
-## Activate jupyter lab 
+## Activate the conda environment and call jupyter lab 
 After generating this environment, call jupyter lab
 ```
+conda activate chromo-env 
 jupyter lab
 ```
 
